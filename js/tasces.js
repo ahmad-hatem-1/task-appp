@@ -133,7 +133,7 @@ function dellAll() {
     else {
         deelAll.classList.remove("show")
     }
-    window.localStorage.clear()
+    window.localStorage.removeItem("taskes")
     parent_text.innerHTML = ""
     location.reload()
 

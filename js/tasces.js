@@ -4,26 +4,27 @@ let form = document.querySelector(`form input[type = "submit"]`).parentElement
 let sup = document.querySelector(`form input[type = "submit"]`)
 let parent_text = document.querySelector(".text-tasc")
 let deelAll = document.querySelector("#dellAll")
+
 parent_text.onclick = e => {
     if (e.target.classList.contains('btn')) {
         e.target.parentElement.remove()
-        if(dataArry.length > 8) {
+        if (dataArry.length > 8) {
             console.log(dataArry)
             deelAll.classList.add("show")
         }
-        else{
+        else {
             deelAll.classList.remove("show")
         }
         remove_item_inTo_local(e.target.parentElement.getAttribute("data-id"))
-        
+
     }
     if (e.target.classList.contains('tasc')) {
         complete_edit(e.target.getAttribute("data-id"))
         e.target.classList.toggle('done')
     }
-    
+
 }
-deelAll.onclick = _=>{
+deelAll.onclick = _ => {
     dellAll()
 }
 // console.log(parent_text.getAttribute("class"))
@@ -51,10 +52,10 @@ form.onsubmit = e => {
         get_value_and_add_arry(input.value)
         add_Arry_toLocalstoreg(dataArry)
         input.value = ""
-        if(dataArry.length >= 8) {
+        if (dataArry.length >= 8) {
             deelAll.classList.add("show")
         }
-        else{
+        else {
             deelAll.classList.remove("show")
         }
 
@@ -69,7 +70,7 @@ function get_value_and_add_arry(title) {
         complete: false
     }
     dataArry.push(data)
-    
+
     add_elment_to_page(dataArry)
 }
 // **** get Element from arry to bage  **** 
@@ -108,36 +109,85 @@ function remove_item_inTo_local(id) {
         return task.id != id
     })
     add_Arry_toLocalstoreg(dataArry)
-    
+
 }
 
 
 function complete_edit(id) {
     for (let i = 0; i < dataArry.length; i++) {
         if (dataArry[i].id == id) {
-        
+
             dataArry[i].complete == false ? dataArry[i].complete = true : dataArry[i].complete = false
         }
-        
+
     }
-    
+
     add_Arry_toLocalstoreg(dataArry)
-    
+
 }
 
-function dellAll () {
-    if(dataArry.length >= 8) {
+function dellAll() {
+    if (dataArry.length >= 8) {
         deelAll.classList.add("show")
     }
-    else{
+    else {
         deelAll.classList.remove("show")
     }
     window.localStorage.clear()
     parent_text.innerHTML = ""
     location.reload()
-    
+
 }
 setTimeout(() => {
     parent_text.classList.add("show")
-}, 1000);
+}, 2000);
 console.log()
+
+
+
+
+// ********* settings ***********
+let settingsSpan = document.getElementById("set")
+let settingsDiv = document.getElementById("set").nextElementSibling
+let close_settingsDiv = document.getElementById("close_st")
+window.document.body.onclick = e => {
+    if (e.target.id == "set") {
+        settingsDiv.classList.add("show")
+    }
+    if (e.target.tagName == "DIV" || e.target.tagName == "MAIN") {
+        settingsDiv.classList.remove("show")
+    }
+    if (e.target.id == "close_st") {
+        settingsDiv.classList.remove("show")
+    }
+}
+
+/// click bacground 
+
+let colors_div = document.getElementById("colors")
+let allColorfromDiv = document.querySelectorAll(".colors > div")
+var root = document.querySelector(":root")
+var rootStyle = getComputedStyle(root)
+var bc = rootStyle.getPropertyValue("--main-bacground")
+if (localStorage.getItem("bacground")){
+    root.style.setProperty("--main-bacground", localStorage.getItem("bacground"))
+}
+else{
+    root.style.setProperty("--main-bacground", "#795548")
+}
+allColorfromDiv.forEach((div) => {
+    div.addEventListener("click", (e) => {
+        allColorfromDiv.forEach(e => {
+            e.classList.remove("active")
+        })
+        div.classList.add("active")
+        root.style.setProperty("--main-bacground",`${e.target.dataset.color}`)
+        localStorage.setItem("bacground",e.target.dataset.color)
+    })
+    // console.log(div.target.classList.contains("active").dataset.color)
+})
+
+
+
+
+console.log(allColorfromDiv)

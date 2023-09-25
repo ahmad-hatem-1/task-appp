@@ -50,6 +50,7 @@ form.onsubmit = e => {
     if (input.value !== "") {
         get_value_and_add_arry(input.value)
         add_Arry_toLocalstoreg(dataArry)
+        dataArry.length > 0 ?  parent_text.classList.add("show") : ""
         input.value = ""
         if(dataArry.length >= 8) {
             deelAll.classList.add("show")
@@ -57,6 +58,7 @@ form.onsubmit = e => {
         else{
             deelAll.classList.remove("show")
         }
+
     }
 }
 
@@ -73,7 +75,6 @@ function get_value_and_add_arry(title) {
 }
 // **** get Element from arry to bage  **** 
 function add_elment_to_page(dataArry) {
- 
     parent_text.innerHTML = ""
     dataArry.forEach(all_task => {
         let div_task = document.createElement('div')
@@ -137,5 +138,4 @@ function dellAll () {
     location.reload()
     
 }
-
 console.log()

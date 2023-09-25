@@ -1,87 +1,65 @@
 
+// ****** to do task app ********** start 
 let input = document.querySelector("form input:first-child")
 let form = document.querySelector(`form input[type = "submit"]`).parentElement
 let sup = document.querySelector(`form input[type = "submit"]`)
 let parent_text = document.querySelector(".text-tasc")
 let deelAll = document.querySelector("#dellAll")
-
+let dataTask_arry = []
+if (localStorage.getItem('theTask')) {
+    dataTask_arry = JSON.parse(localStorage.getItem('theTask'))
+}
 parent_text.onclick = e => {
-    if (e.target.classList.contains('btn')) {
-        e.target.parentElement.remove()
-        if (dataArry.length > 8) {
-            console.log(dataArry)
-            deelAll.classList.add("show")
-        }
-        else {
-            deelAll.classList.remove("show")
-        }
-        remove_item_inTo_local(e.target.parentElement.getAttribute("data-id"))
-
+    if (e.target.classList.contains("btn")) {
+        removeTask(e.target.parentElement.dataset.id)
     }
-    if (e.target.classList.contains('tasc')) {
-        complete_edit(e.target.getAttribute("data-id"))
-        e.target.classList.toggle('done')
+    if (e.target.classList.contains("tasc")) {
+        e.target.classList.toggle("done")
+        completeStatus(e.target.dataset.id)
     }
+    if (dataTask_arry.length > 7) {
+        deelAll.classList.add("show")
+    }
+    else {
 
-}
-deelAll.onclick = _ => {
-    dellAll()
-}
-// console.log(parent_text.getAttribute("class"))
-
-let dataArry = []
-parent_text.classList.contains
-if (localStorage.getItem("taskes")) {
-    dataArry = JSON.parse(localStorage.getItem("taskes"))
-}
-
-function get_data_from_localstoreg() {
-    let data_local_storg = localStorage.getItem("taskes")
-    if (data_local_storg) {
-        add_elment_to_page(JSON.parse(data_local_storg))
+        deelAll.classList.remove("show")
     }
 }
-
-get_data_from_localstoreg()
-
-// **** input customize ****
-
 form.onsubmit = e => {
     e.preventDefault()
     if (input.value !== "") {
-        get_value_and_add_arry(input.value)
-        add_Arry_toLocalstoreg(dataArry)
+        fromInptoArry(input.value)
+        saveArrytoLocalStoreg(dataTask_arry)
         input.value = ""
-        if (dataArry.length >= 8) {
-            deelAll.classList.add("show")
-        }
-        else {
-            deelAll.classList.remove("show")
-        }
-
     }
-}
+    if (dataTask_arry.length > 7) {
+        deelAll.classList.add("show")
+    }
+    else {
 
-// **** add elment to arry **** 
-function get_value_and_add_arry(title) {
-    let data = {
-        title: title,
+        deelAll.classList.remove("show")
+    }
+
+}
+function fromInptoArry(title) {
+    let thetask = {
+        titleTask: title,
         id: Date.now(),
         complete: false
     }
-    dataArry.push(data)
-
-    add_elment_to_page(dataArry)
+    dataTask_arry.push(thetask)
+    creatElmentfrom(dataTask_arry)
 }
-// **** get Element from arry to bage  **** 
-function add_elment_to_page(dataArry) {
+// creatElment in page from
+
+function creatElmentfrom(fromArry) {
     parent_text.innerHTML = ""
-    dataArry.forEach(all_task => {
+    fromArry.forEach(task => {
         let div_task = document.createElement('div')
-        div_task.setAttribute("data-id", all_task.id)
+        div_task.setAttribute("data-id", task.id)
         div_task.className = "tasc"
-        div_task.appendChild(document.createTextNode(all_task.title.charAt(0).toUpperCase() + all_task.title.slice(1)))
-        if (all_task.complete) {
+        div_task.appendChild(document.createTextNode(task.titleTask.charAt(0).toUpperCase() + task.titleTask.slice(1)))
+        if (task.complete) {
             div_task.className = "tasc done"
         }
         let imgDone = document.createElement("img")
@@ -93,60 +71,51 @@ function add_elment_to_page(dataArry) {
         div_task.appendChild(theBtn)
         parent_text.appendChild(div_task)
     })
-    console.log(dataArry)
 }
-// end
-function add_Arry_toLocalstoreg(dataArry) {
-    localStorage.setItem("taskes", JSON.stringify(dataArry))
+function saveArrytoLocalStoreg(arry) {
+    window.localStorage.setItem("theTask", JSON.stringify(arry))
 }
-
-
-
-
-
-function remove_item_inTo_local(id) {
-    dataArry = dataArry.filter(task => {
-        return task.id != id
-    })
-    add_Arry_toLocalstoreg(dataArry)
-
-}
-
-
-function complete_edit(id) {
-    for (let i = 0; i < dataArry.length; i++) {
-        if (dataArry[i].id == id) {
-
-            dataArry[i].complete == false ? dataArry[i].complete = true : dataArry[i].complete = false
-        }
-
+function addDatafromLocaltopage() {
+    if (localStorage.theTask) {
+        creatElmentfrom(dataTask_arry)
     }
-
-    add_Arry_toLocalstoreg(dataArry)
-
-}
-
-function dellAll() {
-    if (dataArry.length >= 8) {
+    if (dataTask_arry.length > 7) {
         deelAll.classList.add("show")
     }
     else {
+
         deelAll.classList.remove("show")
     }
-    window.localStorage.removeItem("taskes")
-    parent_text.innerHTML = ""
-    location.reload()
-
 }
-setTimeout(() => {
-    parent_text.classList.add("show")
-}, 2000);
-console.log()
+addDatafromLocaltopage()
+function removeTask(checkId) {
+    dataTask_arry = dataTask_arry.filter(ele => {
+        return ele.id != checkId
+    })
+    saveArrytoLocalStoreg(dataTask_arry)
+    creatElmentfrom(dataTask_arry)
+}
 
+function completeStatus(check) {
+    for (i = 0; i < dataTask_arry.length; i++) {
+        if (dataTask_arry[i].id == check) {
+            dataTask_arry[i].complete == false ? dataTask_arry[i].complete = true : dataTask_arry[i].complete = false
+        }
 
-
+    }
+    saveArrytoLocalStoreg(dataTask_arry)
+}
+// dell all btn 
+deelAll.onclick = _ => {
+    parent_text.innerHTML = ""
+    localStorage.removeItem("theTask")
+}
+// ****** to do task app ********** end 
 
 // ********* settings ***********
+setTimeout(() => {
+    parent_text.classList.add("show")
+}, 500);
 let settingsSpan = document.getElementById("set")
 let settingsDiv = document.getElementById("set").nextElementSibling
 let close_settingsDiv = document.getElementById("close_st")
@@ -169,10 +138,10 @@ let allColorfromDiv = document.querySelectorAll(".colors > div")
 var root = document.querySelector(":root")
 var rootStyle = getComputedStyle(root)
 var bc = rootStyle.getPropertyValue("--main-bacground")
-if (localStorage.getItem("bacground")){
+if (localStorage.getItem("bacground")) {
     root.style.setProperty("--main-bacground", localStorage.getItem("bacground"))
 }
-else{
+else {
     root.style.setProperty("--main-bacground", "#795548")
 }
 allColorfromDiv.forEach((div) => {
@@ -181,13 +150,11 @@ allColorfromDiv.forEach((div) => {
             e.classList.remove("active")
         })
         div.classList.add("active")
-        root.style.setProperty("--main-bacground",`${e.target.dataset.color}`)
-        localStorage.setItem("bacground",e.target.dataset.color)
+        root.style.setProperty("--main-bacground", `${e.target.dataset.color}`)
+        localStorage.setItem("bacground", e.target.dataset.color)
     })
-    // console.log(div.target.classList.contains("active").dataset.color)
 })
 
 
 
 
-console.log(allColorfromDiv)

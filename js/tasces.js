@@ -139,5 +139,5 @@ function dellAll () {
 }
 setTimeout(() => {
     parent_text.classList.add("show")
-}, 2000);
+}, 1000);
 console.log()

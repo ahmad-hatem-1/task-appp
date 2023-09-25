@@ -266,13 +266,14 @@ footer {
     -webkit-backdrop-filter: blur(19.4px);
     border: 1px solid rgba(255, 255, 255, 0.19);
     text-align: center;
-    color: #B9B9B9;
     font-size: 18px;
-    padding: 10px 20px;
+    padding: 0 20px 10px ;
     z-index: 25;
     background-color: transparent;
 }
-
+footer a {
+    color: #B9B9B9;
+}
 footer span {
     color: #000;
     font-size: 25px;
@@ -375,7 +376,8 @@ footer span {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        margin-top: 150px;
+        margin-top: 100px;
+        align-items: center;
     }
 
     .set-div-click .colors::before {
@@ -383,7 +385,7 @@ footer span {
         position: absolute;
         top: -40%;
         white-space: nowrap;
-        font-size: 15px;
+        font-size: 18px;
         color: #fff;
     }
 
@@ -392,7 +394,7 @@ footer span {
     }
 
     .set-div-click {
-        padding: 20px !important;
+        padding: 10px !important;
     }
 
     .set-div-click .colors>div {

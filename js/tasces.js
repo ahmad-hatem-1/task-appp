@@ -50,7 +50,6 @@ form.onsubmit = e => {
     if (input.value !== "") {
         get_value_and_add_arry(input.value)
         add_Arry_toLocalstoreg(dataArry)
-        dataArry.length > 0 ?  parent_text.classList.add("show") : ""
         input.value = ""
         if(dataArry.length >= 8) {
             deelAll.classList.add("show")
@@ -138,4 +137,7 @@ function dellAll () {
     location.reload()
     
 }
+setTimeout(() => {
+    parent_text.classList.add("show")
+}, 2000);
 console.log()

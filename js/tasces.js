@@ -109,6 +109,7 @@ function completeStatus(check) {
 deelAll.onclick = _ => {
     parent_text.innerHTML = ""
     localStorage.removeItem("theTask")
+    window.location.reload()
 }
 // ****** to do task app ********** end 
 

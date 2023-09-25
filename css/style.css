@@ -236,8 +236,11 @@ form>img:first-of-type {
         top: 18%;
     }
 
+    form {
+        margin-bottom: 30px;
+    }
 
-    form>img:first-of-type {
+    form > img:first-of-type {
         position: absolute;
         width: 78px;
         top: 102%;
@@ -427,3 +430,5 @@ footer span {
 .show-2 {
     transform: translate(0, 0);
 }
+
+

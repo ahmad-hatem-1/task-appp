@@ -8,15 +8,16 @@
 
 
 body {
-    background-color: #795548e3;
+    background-color: var(--main-bacground);
+    transition: bacground-color .5s;
     height: 100vh;
     overflow: hidden;
 }
 
 main {
-    height: 100vh ;
+    height: 100vh;
     overflow: hidden;
-        padding-bottom: 50px;
+    padding-bottom: 50px;
 }
 
 .container {
@@ -105,7 +106,7 @@ input:first-child:focus {
     transform: translateX(100%);
     opacity: 0;
     transition: 0.3s;
-    transition-property:opacity , transform;
+    transition-property: opacity, transform;
     margin-bottom: 50px;
 }
 
@@ -130,6 +131,7 @@ input:first-child:focus {
             transparent 75%,
             transparent)
 }
+
 .tasc,
 .done {
     width: 100%;
@@ -205,7 +207,7 @@ form>img:first-of-type {
     opacity: 0;
     transition: 1s;
     transition-property: transform, opacity, color, background-color;
-    transform: translateX(50px);
+    transform: translateX(100%);
     margin-bottom: 50px;
 
 }
@@ -267,11 +269,159 @@ footer {
     color: #B9B9B9;
     font-size: 18px;
     padding: 10px 20px;
+    z-index: 25;
+    background-color: transparent;
 }
 
 footer span {
-    color: #FF9800;
+    color: #000;
     font-size: 25px;
     display: inline-block;
     margin-top: 10px;
+}
+
+
+#set {
+    background: rgba(255, 255, 255, 0.19);
+    border-radius: 16px 0 0 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.19);
+    position: absolute;
+    width: fit-content;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 50%;
+    transform: translateY(-50%);
+    overflow: hidden;
+    cursor: pointer;
+    transition: color .3s;
+    transition-property: color, padding;
+}
+
+#set:hover {
+    color: #777;
+    padding-right: 15px;
+
+
+}
+
+.set-div-click {
+    position: absolute;
+    width: 25vw !important;
+    background-color: #424040 !important;
+    height: 100vh;
+    z-index: 20;
+    padding: 50px;
+    align-items: flex-start !important;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: .5s !important;
+    transition-property: opacity, transform;
+
+}
+
+.set-div-click span {
+    color: #777;
+    display: block;
+    font-size: 40px;
+    cursor: pointer;
+    background-color: var(--main-bacground);
+    border-radius: 50%;
+    width: fit-content;
+}
+
+.set-div-click .colors {
+    position: relative;
+    width: 100%;
+    height: 20%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 200px;
+
+
+}
+
+.set-div-click .colors::before {
+    content: attr(data-text);
+    position: absolute;
+    top: -40%;
+    font-size: 25px;
+    color: #fff;
+}
+
+.set-div-click .colors>div {
+    width: 80px;
+    height: 130px;
+    cursor: pointer;
+    margin-left: 10px;
+    border-radius: 10px;
+}
+
+@media(max-width:1100px) {
+    .set-div-click .colors>div {
+        width: 50px;
+        height: 80px;
+
+    }
+}
+
+@media(max-width:768px) {
+    .set-div-click .colors {
+        position: relative;
+        width: 100%;
+        height: 20%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-top: 150px;
+    }
+
+    .set-div-click .colors::before {
+        content: attr(data-text);
+        position: absolute;
+        top: -40%;
+        white-space: nowrap;
+        font-size: 15px;
+        color: #fff;
+    }
+
+    .set-div-click span {
+        margin-top: 50px;
+    }
+
+    .set-div-click {
+        padding: 20px !important;
+    }
+
+    .set-div-click .colors>div {
+        margin: 0;
+        min-height: 60px;
+        margin-bottom: 20px;
+    }
+}
+
+.set-div-click .colors div[data-color="#795548"] {
+    background-color: #795548;
+}
+
+.set-div-click .colors div[data-color="#ad6c0a"] {
+    background-color: #ad6c0a;
+}
+
+.set-div-click .colors div[data-color="#58af7f"] {
+    background-color: #58af7f;
+}
+
+.set-div-click .colors div[data-color="#eef3ea"] {
+    background-color: #eef3ea;
+}
+
+.set-div-click .colors div[data-color="#f257ff2e"] {
+    background-color: #f257ff2e;
+}
+
+.show-2 {
+    transform: translate(0, 0);
 }

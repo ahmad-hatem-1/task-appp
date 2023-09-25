@@ -16,6 +16,7 @@ body {
 main {
     height: 100vh ;
     overflow: hidden;
+        padding-bottom: 50px;
 }
 
 .container {

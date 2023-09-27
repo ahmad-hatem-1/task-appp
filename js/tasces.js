@@ -13,6 +13,11 @@ parent_text.onclick = e => {
     if (e.target.classList.contains("btn")) {
         removeTask(e.target.parentElement.dataset.id)
     }
+    if (e.target.classList.contains("paragra")) {
+        e.target.parentElement.classList.toggle("done")
+        console.log(e.target.parentElement)
+        completeStatus(e.target.parentElement.dataset.id)
+    }
     if (e.target.classList.contains("tasc")) {
         e.target.classList.toggle("done")
         completeStatus(e.target.dataset.id)
@@ -58,7 +63,10 @@ function creatElmentfrom(fromArry) {
         let div_task = document.createElement('div')
         div_task.setAttribute("data-id", task.id)
         div_task.className = "tasc"
-        div_task.appendChild(document.createTextNode(task.titleTask.charAt(0).toUpperCase() + task.titleTask.slice(1)))
+        let thetext = document.createElement("p")
+        thetext.className = "paragra"
+        thetext.append(document.createTextNode(task.titleTask.charAt(0).toUpperCase() + task.titleTask.slice(1)))
+        div_task.appendChild(thetext)
         if (task.complete) {
             div_task.className = "tasc done"
         }
@@ -109,18 +117,23 @@ function completeStatus(check) {
 deelAll.onclick = _ => {
     parent_text.innerHTML = ""
     localStorage.removeItem("theTask")
-    window.location.reload()
+    location.reload()
 }
 // ****** to do task app ********** end 
 
 // ********* settings ***********
 setTimeout(() => {
     parent_text.classList.add("show")
+    form.classList.add("show")
+    document.getElementsByTagName("footer")[0].classList.add("show-2")
 }, 500);
-let settingsSpan = document.getElementById("set")
+let settingsSpan = document.getElementById("seticone")
 let settingsDiv = document.getElementById("set").nextElementSibling
 let close_settingsDiv = document.getElementById("close_st")
 window.document.body.onclick = e => {
+    if (e.target.id == "seticone") {
+        settingsDiv.classList.add("show")
+    }
     if (e.target.id == "set") {
         settingsDiv.classList.add("show")
     }
@@ -131,6 +144,7 @@ window.document.body.onclick = e => {
         settingsDiv.classList.remove("show")
     }
 }
+console.log(document.getElementById("seticone").parentElement)
 
 /// click bacground 
 
@@ -158,4 +172,9 @@ allColorfromDiv.forEach((div) => {
 
 
 
-
+//*********** loding ********
+window.onload = _=>{
+    document.querySelector(".loding").classList.add("finish_loding")
+    document.getElementsByTagName("main")[0].classList.add("finish_blur_loding")
+    document.getElementsByTagName("footer")[0].classList.add("finish_blur_loding")
+}

@@ -14,6 +14,7 @@ body {
 }
 
 main {
+
     height: 100vh;
     overflow: hidden;
     padding-bottom: 50px;
@@ -27,6 +28,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
 }
 
 
@@ -111,7 +113,7 @@ input:first-child:focus {
     opacity: 0;
     transition: 0.3s;
     transition-property: opacity, transform;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 ::-webkit-scrollbar-track {
@@ -134,8 +136,7 @@ input:first-child:focus {
             rgba(255, 255, 255, .2) 50%,
             rgba(255, 255, 255, .2) 75%,
             transparent 75%,
-            transparent)
-;
+            transparent);
 }
 
 .tasc,
@@ -145,7 +146,7 @@ input:first-child:focus {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 20px;
+    padding: 10px 10px;
     border-radius: 15px;
     font-size: 20px;
     margin-bottom: 20px;
@@ -159,9 +160,10 @@ input:first-child:focus {
 
 .tasc p {
     overflow: hidden;
-    word-break: break-all;
+    word-break: b;
+    word-break: break-word;
     line-height: 1.5;
-    flex: 0.8;
+    flex: 0.9;
 }
 
 .done:hover,
@@ -188,7 +190,8 @@ input:first-child:focus {
     font-family: btn;
 
 }
-.btn:hover{
+
+.btn:hover {
     background-color: rgb(255, 0, 0);
 }
 
@@ -211,9 +214,9 @@ form>img:first-of-type {
     position: absolute;
     width: 30px;
     transition: transform .5s;
-    top: 50%;
-    transform: scale(1) translateY(-50%);
-    left: 20%;
+    bottom: 5px;
+    transform: scale(1);
+    left: 16%;
 
 }
 
@@ -228,7 +231,7 @@ form>img:first-of-type {
     cursor: pointer;
     opacity: 0;
     transition: 1s;
-    transition-property: transform, opacity, color, background-color , border;
+    transition-property: transform, opacity, color, background-color, border;
     transform: translateX(100%);
     margin-bottom: 50px;
     font-size: 14px;
@@ -263,7 +266,7 @@ form>img:first-of-type {
         margin-bottom: 30px;
     }
 
-    form > img:first-of-type {
+    form>img:first-of-type {
         position: absolute;
         width: 78px;
         top: 102%;
@@ -274,7 +277,7 @@ form>img:first-of-type {
 
     .done img {
 
-        left: 35%;
+        left: 30%;
 
 
     }
@@ -288,24 +291,28 @@ footer {
     text-align: center;
     font-size: 18px;
     padding-bottom: 20px;
-    z-index: 25;
+    z-index: 50;
     background-color: transparent;
     transform: translateY(100%);
     opacity: 0;
     transition: 0.3s;
-    transition-property: opacity , transform;
+    transition-property: opacity, transform;
     background-color: #fff;
     overflow: hidden;
 }
+
 footer a {
     color: #B9B9B9;
     display: block;
+    font-family: text;
 }
+
 footer span {
     color: #000;
-    font-size: 25px;
+    font-size: 20px;
     display: inline-block;
     margin-top: 10px;
+    cursor: pointer;
 }
 
 
@@ -314,7 +321,7 @@ footer span {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     border: 2px solid rgb(255, 255, 255);
     position: absolute;
-  
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -324,45 +331,50 @@ footer span {
     cursor: pointer;
     transition: color .3s;
     transition-property: border;
-   background-color: #fff;
+    background-color: #fff;
 }
-@media (min-width:768px){
+
+@media (min-width:768px) {
     #set {
         width: 50px;
         width: fit-content;
         height: 50px;
         padding: 5px;
-}
-#set img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: 0.3s;
+    }
+
+    #set img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 0.3s;
     }
 }
 
-@media (max-width:768px){
+@media (max-width:768px) {
     #set {
-        width:35px;
+        width: 35px;
         width: fit-content;
         height: 35px;
-}
-#set img {
-    width: 35px;
-    height: 100%;
-    object-fit: cover;
-    transition: 0.3s;
+    }
+
+    #set img {
+        width: 35px;
+        height: 100%;
+        object-fit: cover;
+        transition: 0.3s;
     }
 }
 
-    
-    #set:hover{
-        border: 2px solid rgb(158, 231, 231);
-    }
-    #set:hover img{
-        margin-right: 10px;
-    
-    }
+
+#set:hover {
+    border: 2px solid rgb(158, 231, 231);
+}
+
+#set:hover img {
+    margin-right: 10px;
+
+}
+
 .set-div-click {
     position: absolute;
     width: 25vw !important;
@@ -385,14 +397,16 @@ footer span {
     height: 30px;
     transition: transform 0.3s;
 }
+
 .set-div-click .xclose img {
     width: 100%;
     height: 100%;
-    transition:  0.3s;
-    transition-property: opacity ,transform;
+    transition: 0.3s;
+    transition-property: opacity, transform;
 }
-.set-div-click .xclose img:hover{
-    transform: scale(1.2) rotate(180deg) ;
+
+.set-div-click .xclose img:hover {
+    transform: scale(1.2) rotate(180deg);
     opacity: 0.5;
 }
 
@@ -494,22 +508,19 @@ footer span {
 
 
 @font-face {
-    font-family:input;
+    font-family: input;
     src: url(../foonts/input/Almarai-Regular.ttf);
 }
+
 @font-face {
-    font-family:btn;
+    font-family: btn;
     src: url(../foonts/btn/Marhey-VariableFont_wght.ttf);
 }
+
 @font-face {
-    font-family:text;
+    font-family: text;
     src: url(../foonts/Amiri/Amiri-Regular.ttf);
 }
-
-
-
-
-
 
 
 
@@ -541,7 +552,6 @@ footer span {
 .finish_blur_loding {
     transition: filter 0.5s;
     filter: blur(0);
-    z-index: -1;
 }
 
 
@@ -631,9 +641,10 @@ footer span {
 
 .spikes {
     position: relative;
-    height: 40px;
+    height: 30px;
     background-color: white;
 }
+
 .spikes::after {
     content: '';
     position: absolute;
@@ -645,11 +656,4 @@ footer span {
     background-image: linear-gradient(135deg, var(--main-bacground) 25%, transparent 25%), linear-gradient(225deg, var(--main-bacground) 25%, transparent 25%);
     background-position: 0 0;
     left: 0;
-}
-
-
-
-
-#close_st img{
-
 }

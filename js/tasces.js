@@ -25,7 +25,6 @@ window.onload = _ => {
         }
         if (e.target.classList.contains("tasc")) {
             e.target.classList.toggle("done")
-            e.target.classList.toggle("done")
             completeStatus(e.target.dataset.id)
         }
         if (dataTask_arry.length > 7) {

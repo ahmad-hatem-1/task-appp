@@ -4,6 +4,20 @@
     box-sizing: border-box;
     direction: rtl;
 }
+@font-face {
+    font-family: input;
+    src: url(../foonts/input/Almarai-Regular.ttf);
+}
+
+@font-face {
+    font-family: btn;
+    src: url(../foonts/btn/Marhey-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: text;
+    src: url(../foonts/Amiri/Amiri-Regular.ttf);
+}
 
 
 body {
@@ -31,7 +45,7 @@ main {
     justify-content: flex-start;
 }
 
-
+/* ********************* input style start ****************** */
 form {
     position: relative;
     width: 100%;
@@ -50,7 +64,7 @@ form {
     transition: 0.3s;
 }
 
-form input:first-child {
+form input[type="text"] {
     font-family: input;
     width: 90%;
     padding: 9px 15px;
@@ -62,11 +76,16 @@ form input:first-child {
 
 }
 
+input[type="text"]:focus {
+    outline: 0;
+    background-color: #eee;
+}
+
 form input[type="submit"] {
     display: none;
 }
 
-label {
+.supmit-label {
     width: fit-content;
     flex: 0.1;
     text-align: center;
@@ -80,29 +99,36 @@ label {
     align-items: center;
 }
 
-label:hover {
+.supmit-label:hover {
     opacity: 0.5;
 }
 
-label img {
+.supmit-label img {
     width: 40px;
 }
 
-form input[type="submit"]:focus+label {
+form input[type="submit"]:focus+.supmit-label {
     opacity: 0.5;
 }
 
-input:first-child:focus {
-    outline: 0;
-    background-color: #eee;
+form .arro-img {
+    position: absolute;
+    width: 207px;
+    top: 103%;
+    right: -141px;
+    z-index: -30;
+    transform: translateY(-30%) rotate(-11deg);
 }
+
+/* ********************* input style end ****************** */
+
+
+/* ********************* parent taskes style start ****************** */
 
 .text-tasc {
     width: 100%;
     height: calc(70%);
-    background: #777;
     border-radius: 15px;
-    cursor: pointer;
     padding: 10px;
     overflow-y: auto;
     overflow-x: hidden;
@@ -140,6 +166,10 @@ input:first-child:focus {
             transparent);
 }
 
+/* ********************* parent taskes style end ****************** */
+
+/* ********************* taskes style start ****************** */
+
 .tasc,
 .done {
     width: 100%;
@@ -156,12 +186,72 @@ input:first-child:focus {
     background-color: #fff;
     box-shadow: 0 0 10px #bed1d3;
     font-family: text;
+    cursor: pointer;
+}
+
+
+
+.tasc p {
+    overflow: hidden;
+    word-break: b;
+    word-break: break-word;
+    line-height: 1.5;
+    flex: 0.9;
+}
+
+
+.done:hover,
+.tasc:hover {
+    background-color: #bed1d3;
+}
+
+.tasc img {
+    transform: scale(0);
+    width: 0;
+}
+
+
+.done {
+    background-image: linear-gradient(135deg, #00000078 10%, #81FBB8 100%);
+    transition: background .5s;
+}
+
+.done img {
+    display: block;
+    position: absolute;
+    width: 30px;
+    bottom: 5px;
+    transform: scale(1);
+    left: 16%;
+    animation: jello-vertical 1s 1 both;
+
+}
+
+.btn {
+    padding: 5px 10px;
+    color: #fff;
+    background-color: tomato;
+    border-radius: 10px;
+    border: 0;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 14px;
+    width: 70px;
+    transition: background .3s;
+    font-family: btn;
+}
+
+.btn:hover {
+    background-color: rgb(255, 0, 0);
 }
 
 .sign {
     animation: tilt-in-right-2 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
+.dell_anima {
+    animation: scale-out-hor-right .5s cubic-bezier(.55, .085, .68, .53) both
+}
 
 @-webkit-keyframes tilt-in-right-2 {
     0% {
@@ -191,8 +281,6 @@ input:first-child:focus {
     }
 }
 
-
-
 @keyframes scale-out-hor-right {
     0% {
         transform: scaleX(1);
@@ -206,12 +294,6 @@ input:first-child:focus {
         opacity: 1
     }
 }
-
-
-
-
-
-
 
 @keyframes jello-vertical {
     0% {
@@ -244,71 +326,11 @@ input:first-child:focus {
 }
 
 
-.tasc p {
-    overflow: hidden;
-    word-break: b;
-    word-break: break-word;
-    line-height: 1.5;
-    flex: 0.9;
-}
+/* ********************* taskes style end ****************** */
 
-.dell_anima {
-    animation: scale-out-hor-right .5s cubic-bezier(.55, .085, .68, .53) both
-}
 
-.done:hover,
-.tasc:hover {
-    background-color: #bed1d3;
-}
+/* ********************* btn dellAll style start ****************** */
 
-.tasc img {
-    transform: scale(0);
-    width: 0;
-}
-
-.btn {
-    padding: 5px 10px;
-    color: #fff;
-    background-color: tomato;
-    border-radius: 10px;
-    border: 0;
-    cursor: pointer;
-    transition: 0.3s;
-    font-size: 14px;
-    width: 70px;
-    transition: background .3s;
-    font-family: btn;
-
-}
-
-.btn:hover {
-    background-color: rgb(255, 0, 0);
-}
-
-form>img:first-of-type {
-    position: absolute;
-    width: 207px;
-    top: 103%;
-    right: -141px;
-    z-index: -30;
-    transform: translateY(-30%) rotate(-11deg);
-}
-
-.done {
-    background-image: linear-gradient(135deg, #00000078 10%, #81FBB8 100%);
-    transition: background .5s;
-}
-
-.done img {
-    display: block;
-    position: absolute;
-    width: 30px;
-    bottom: 5px;
-    transform: scale(1);
-    left: 16%;
-    animation: jello-vertical 1s 1 both;
-
-}
 
 #dellAll {
     width: 50%;
@@ -332,6 +354,8 @@ form>img:first-of-type {
     background-color: #ff0000;
     border: 2px solid #fff;
 }
+
+/* ********************* btn dellAll style end ****************** */
 
 .show {
     transform: translateX(0) !important;
@@ -373,6 +397,7 @@ form>img:first-of-type {
     }
 }
 
+/* ********************* footer style start ****************** */
 footer {
     position: absolute;
     width: 100%;
@@ -422,6 +447,10 @@ footer span {
     }
 }
 
+/* ********************* footer style end ****************** */
+
+
+/* ********************* java script setting and style ***** */
 
 #set {
     border-radius: 16px 0 0 16px;
@@ -449,7 +478,7 @@ footer span {
         height: 50px;
         padding: 5px;
     }
-
+    
     #set img {
         width: 100%;
         height: 100%;
@@ -464,7 +493,7 @@ footer span {
         width: fit-content;
         height: 35px;
     }
-
+    
     #set img {
         width: 35px;
         height: 100%;
@@ -480,7 +509,7 @@ footer span {
 
 #set:hover img {
     margin-right: 10px;
-
+    
 }
 
 .set-div-click {
@@ -496,7 +525,7 @@ footer span {
     opacity: 0;
     transition: .5s !important;
     transition-property: opacity, transform;
-
+    
 }
 
 .set-div-click .xclose {
@@ -527,8 +556,8 @@ footer span {
     display: flex;
     justify-content: space-between;
     margin-top: 200px;
-
-
+    
+    
 }
 
 .set-div-click .colors::before {
@@ -551,7 +580,7 @@ footer span {
     .set-div-click .colors>div {
         width: 50px;
         height: 80px;
-
+        
     }
 }
 
@@ -566,7 +595,7 @@ footer span {
         margin-top: 100px;
         align-items: center;
     }
-
+    
     .set-div-click .colors::before {
         content: attr(data-text);
         position: absolute;
@@ -575,16 +604,16 @@ footer span {
         font-size: 18px;
         color: #fff;
     }
-
+    
     .set-div-click span {
         margin-top: 50px;
     }
-
+    
     .set-div-click {
         padding-top: 100px;
         padding: 150px 10px 10px 10px !important;
     }
-
+    
     .set-div-click .colors>div {
         margin: 0;
         min-height: 60px;
@@ -617,32 +646,13 @@ footer span {
     opacity: 1;
 }
 
-
-@font-face {
-    font-family: input;
-    src: url(../foonts/input/Almarai-Regular.ttf);
-}
-
-@font-face {
-    font-family: btn;
-    src: url(../foonts/btn/Marhey-VariableFont_wght.ttf);
-}
-
-@font-face {
-    font-family: text;
-    src: url(../foonts/Amiri/Amiri-Regular.ttf);
-}
-
-
-
-
 .loding {
     width: 100%;
     height: 100vh;
     position: fixed;
     z-index: 50;
     cursor: wait;
-
+    
 }
 
 
@@ -733,7 +743,7 @@ footer span {
     0% {
         transform: rotate(0deg);
     }
-
+    
     100% {
         transform: rotate(360deg);
     }
@@ -743,11 +753,14 @@ footer span {
     0% {
         transform: rotate(45deg);
     }
-
+    
     100% {
         transform: rotate(405deg);
     }
 }
+
+/* ********************* java script setting and style end  ***** */
+
 
 .spikes {
     position: relative;

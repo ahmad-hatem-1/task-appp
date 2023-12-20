@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tasc_timer</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            direction: rtl;
+        }
+        div{
+            width: 100%;
+            min-height: 100vh;
+            background-color: #272727;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        iframe {
+            display: block;
+            background-color: #b9b9af;
+            border-radius:250px;
+            outline: none;
+            border: none;
+            color:#fff;
+            pointer-events: none;
+            width: 80%;
+           
+            height: 200px;
+            animation: infinite 1s bc ;
+        }
+        h1{
+            color: #fff;
+            font-size: 30px;
+            text-align: center;
+            margin-bottom: 40px;
+            font-family: ahmed;
+        }
+        h3{
+            color: #fff;
+            font-size: 30px;
+            text-align: center;
+            font-family: ahmed-2;
+            position: absolute;
+            bottom: 20%;
+            font-weight: normal;
+        }
+        @keyframes bc {
+            0%{
+                box-shadow: 0px 0px 20px #ffffff;
+            }
+            
+            50%{
+                box-shadow: 1px 1px 25px #b9b9af;
+
+            }
+            
+        }
+        @font-face {
+            font-family:ahmed;
+            src: url(foonts/29LTZaridSerif-Rg.ttf);
+        }
+        @font-face {
+            font-family: ahmed-2;
+            src: url(foonts/Are.otf);
+        }
+        @media (max-width:768px) {
+            iframe{
+                max-height: 100px;
+            } 
+            h3{
+                bottom: 30%;
+            }
+        }
+        
+
+    </style>
+</head>
+
+
+<body>
+    <main> 
+        <div class="container">
+            <h1>متبقي على إمتحان منتصف العام :  </h1>
+            <h3> إعداد : أحمد حاتم</h3>
+            <iframe id="online-alarm-kur-iframe" src="https://embed-countdown.onlinealarmkur.com/ar/#2024-01-01T00:00:00@Africa%2FCairo" iframe>
+            </div>
+        </main>
+        
+</body>
+</html>

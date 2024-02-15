@@ -9,7 +9,7 @@ window.onload = _ => {
     let sup = document.querySelector(`form input[type = "submit"]`)
     let parent_text = document.querySelector(".text-tasc")
     let deelAll = document.querySelector("#dellAll")
-    let dataTask_arry = []
+    let dataTask_arry = new Array()
     if (localStorage.getItem('theTask')) {
         dataTask_arry = JSON.parse(localStorage.getItem('theTask'))
     }
@@ -20,7 +20,6 @@ window.onload = _ => {
         }
         if (e.target.classList.contains("paragra")) {
             e.target.parentElement.classList.toggle("done")
-            console.log(e.target.parentElement)
             completeStatus(e.target.parentElement.dataset.id)
         }
         if (e.target.classList.contains("tasc")) {
@@ -31,7 +30,6 @@ window.onload = _ => {
             deelAll.classList.add("show")
         }
         else {
-
             deelAll.classList.remove("show")
         }
     }
@@ -53,7 +51,6 @@ window.onload = _ => {
             deelAll.classList.add("show")
         }
         else {
-
             deelAll.classList.remove("show")
         }
 
@@ -170,8 +167,6 @@ window.onload = _ => {
     let colors_div = document.getElementById("colors")
     let allColorfromDiv = document.querySelectorAll(".colors > div")
     var root = document.querySelector(":root")
-    var rootStyle = getComputedStyle(root)
-    var bc = rootStyle.getPropertyValue("--main-bacground")
     if (localStorage.getItem("bacground")) {
         root.style.setProperty("--main-bacground", localStorage.getItem("bacground"))
     }

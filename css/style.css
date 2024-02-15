@@ -5,20 +5,25 @@
     direction: rtl;
 }
 @font-face {
-    font-family: input;
+    font-family: Almarai;
     src: url(../foonts/input/Almarai-Regular.ttf);
 }
 
 @font-face {
-    font-family: btn;
+    font-family: Marhey;
     src: url(../foonts/btn/Marhey-VariableFont_wght.ttf);
 }
 
 @font-face {
-    font-family: text;
+    font-family:Amiri;
     src: url(../foonts/Amiri/Amiri-Regular.ttf);
 }
 
+:root {
+    --first-font : Almarai ;
+    --sacond-font : Amiri ;
+    --btn-font : Marhey ;
+}
 
 body {
     transition: bacground-color .5s;
@@ -65,7 +70,7 @@ form {
 }
 
 form input[type="text"] {
-    font-family: input;
+    font-family: var(--first-font);
     width: 90%;
     padding: 9px 15px;
     border-radius: 10px;
@@ -185,7 +190,7 @@ form .arro-img {
     height: fit-content;
     background-color: #fff;
     box-shadow: 0 0 10px #bed1d3;
-    font-family: text;
+    font-family: var(--sacond-font);
     cursor: pointer;
 }
 
@@ -193,10 +198,9 @@ form .arro-img {
 
 .tasc p {
     overflow: hidden;
-    word-break: b;
     word-break: break-word;
     line-height: 1.5;
-    flex: 0.9;
+    width: 80%;
 }
 
 
@@ -215,16 +219,16 @@ form .arro-img {
     background-image: linear-gradient(135deg, #00000078 10%, #81FBB8 100%);
     transition: background .5s;
 }
+.done p {
+    text-decoration: line-through;
+}
 
 .done img {
-    display: block;
-    position: absolute;
     width: 30px;
     bottom: 5px;
     transform: scale(1);
-    left: 16%;
     animation: jello-vertical 1s 1 both;
-
+    margin: 0 10px;
 }
 
 .btn {
@@ -238,7 +242,7 @@ form .arro-img {
     font-size: 14px;
     width: 70px;
     transition: background .3s;
-    font-family: btn;
+    font-family: var(--btn-font);
 }
 
 .btn:hover {
@@ -347,7 +351,7 @@ form .arro-img {
     transform: translateX(100%);
     margin-bottom: 50px;
     font-size: 14px;
-    font-family: btn;
+    font-family: var(--btn-font);
 }
 
 #dellAll:hover {
@@ -369,8 +373,6 @@ form .arro-img {
 
     }
 
-
-
     .text-tasc {
         max-height: 600px;
         top: 18%;
@@ -388,13 +390,6 @@ form .arro-img {
         transform: translateY(-30%) rotate(-10deg);
     }
 
-
-    .done img {
-
-        left: 30%;
-
-
-    }
 }
 
 /* ********************* footer style start ****************** */
@@ -417,9 +412,9 @@ footer {
 }
 
 footer a {
-    color: #B9B9B9;
+    color: #000;
     display: block;
-    font-family: text;
+    font-family: var(--sacond-font);
 }
 
 footer span {
@@ -514,13 +509,14 @@ footer span {
 
 .set-div-click {
     position: absolute;
-    width: 25vw !important;
+    width: 30vw !important;
     background-color: #424040 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 100vh;
     z-index: 20;
-    padding: 50px;
-    padding-top: 150px;
-    align-items: flex-start !important;
+    padding: 20px;
     transform: translateX(100%);
     opacity: 0;
     transition: .5s !important;
@@ -529,12 +525,13 @@ footer span {
 }
 
 .set-div-click .xclose {
-    display: block;
+    position: absolute;
     cursor: pointer;
     width: 30px;
     height: 30px;
     transition: transform 0.3s;
-    margin-bottom: 114px;
+    top: 10%;
+    right:10%;
 }
 
 .set-div-click .xclose img {
@@ -550,76 +547,31 @@ footer span {
 }
 
 .set-div-click .colors {
-    position: relative;
-    width: 100%;
-    height: 20%;
+    margin-top: 50px;
     display: flex;
-    justify-content: space-between;
-    margin-top: 200px;
-    
-    
+    flex-flow: column ;
+    align-items: center;
+    position: relative;
+    width: 500px;
 }
 
 .set-div-click .colors::before {
     content: attr(data-text);
     position: absolute;
-    top: -40%;
-    font-size: 25px;
+    top: -20%;
+    font-size: 20px;
+    font-family:var(--first-font) ;
     color: #fff;
 }
 
 .set-div-click .colors>div {
-    width: 80px;
-    height: 130px;
+    width: 80%;
+    height: 70px;
     cursor: pointer;
-    margin-left: 10px;
     border-radius: 10px;
+    margin-bottom: 20px;
 }
 
-@media(max-width:1100px) {
-    .set-div-click .colors>div {
-        width: 50px;
-        height: 80px;
-        
-    }
-}
-
-@media(max-width:768px) {
-    .set-div-click .colors {
-        position: relative;
-        width: 100%;
-        height: 20%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        margin-top: 100px;
-        align-items: center;
-    }
-    
-    .set-div-click .colors::before {
-        content: attr(data-text);
-        position: absolute;
-        top: -40%;
-        white-space: nowrap;
-        font-size: 18px;
-        color: #fff;
-    }
-    
-    .set-div-click span {
-        margin-top: 50px;
-    }
-    
-    .set-div-click {
-        padding-top: 100px;
-        padding: 150px 10px 10px 10px !important;
-    }
-    
-    .set-div-click .colors>div {
-        margin: 0;
-        min-height: 60px;
-        margin-bottom: 20px;
-    }
-}
 
 .set-div-click .colors div[data-color="#795548"] {
     background-color: #795548;
@@ -681,18 +633,18 @@ footer span {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     background: transparent;
     border: 3px solid white;
     border-radius: 50%;
-    text-align: center;
-    line-height: 150px;
-    font-family: sans-serif;
-    font-size: 19px;
+    font-size: 25px;
     font-weight: 100;
-    color: #0072ff;
-    font-family: input;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--sacond-font);
     text-shadow: 0 0 10px rgba(0, 0, 255, 0.61);
     box-shadow: 0 0 20px rgba(0, 0, 0, .5);
 }
@@ -705,8 +657,8 @@ footer span {
     width: 100%;
     height: 100%;
     border: 3px solid transparent;
-    border-top: 3px solid #00c6ff;
-    border-right: 3px solid #00c6ff;
+    border-top: 3px solid #000;
+    border-right: 3px solid #000;
     border-radius: 50%;
     animation: animateC 2s linear infinite;
 }
@@ -729,11 +681,11 @@ footer span {
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background: linear-gradient(to left, #0072ff, #00c6ff);
+    background: linear-gradient(to left, #000, #000);
     ;
     top: -6px;
     right: -8px;
-    box-shadow: 0 0 20px blue;
+    box-shadow: 0 0 20px #777;
 }
 
 
